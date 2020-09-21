@@ -2,8 +2,33 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-// Your JavaScript code goes here!
+let states = {
+  "♡": "♥",
+  "♥": "♡"
+};
 
+let red = {
+  "": "red",
+  "red" : ""
+};
+
+let articles = document.getElementsByClassName('like');
+
+function likeFn(e) {
+  let heart = e.target;
+  mimicServerCall("url")
+    .then(function(serverMessage){
+       heart.innerText = states[heart.innerText];
+       heart.style.color = red[heart.style.color];
+    })
+    .catch(function(error) {
+      alert("Error")
+      document.getElementById("modal").className = "";
+    });
+}
+for (let ele of articles){
+  ele.addEventListener("click", likeFn);
+}
 
 
 
