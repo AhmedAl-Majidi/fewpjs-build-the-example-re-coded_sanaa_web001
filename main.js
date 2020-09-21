@@ -2,33 +2,37 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-let states = {
+let glyphStates = {
   "♡": "♥",
   "♥": "♡"
 };
 
-let red = {
-  "": "red",
-  "red" : ""
+let colorStates = {
+  "red" : "",
+  "": "red"
 };
 
-let articles = document.querySelectorAll('.like');
+let articleHearts = document.querySelectorAll(".like");
 
-function likeFn(e) {
+function likeCallback(e) {
   let heart = e.target;
-  mimicServerCall("url")
+  mimicServerCall("bogusUrl")
+   //OR: mimicServerCall("bogusUrl", {forceFailure: true})
     .then(function(serverMessage){
-       heart.innerText = states[heart.innerText];
-       heart.style.color = red[heart.style.color];
+       heart.innerText = glyphStates[heart.innerText];
+       heart.style.color = colorStates[heart.style.color];
     })
     .catch(function(error) {
+      // Basic
+      // alert("Something went wrong!");
+      // or....
       document.getElementById("modal").className = "";
     });
 }
-for (let ele of articles){
-  ele.addEventListener("click", likeFn);
-}
 
+for (let glyph of articleHearts) {
+  glyph.addEventListener("click", likeCallback);
+}
 
 
 //------------------------------------------------------------------------------
