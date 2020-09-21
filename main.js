@@ -22,7 +22,6 @@ function likeFn(e) {
        heart.style.color = red[heart.style.color];
     })
     .catch(function(error) {
-      alert("Error")
       document.getElementById("modal").className = "";
     });
 }
