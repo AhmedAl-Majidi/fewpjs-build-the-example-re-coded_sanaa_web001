@@ -12,7 +12,7 @@ let red = {
   "red" : ""
 };
 
-let articles = document.querySelectorAll('like');
+let articles = document.querySelectorAll('.like');
 
 function likeFn(e) {
   let heart = e.target;
